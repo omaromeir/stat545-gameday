@@ -10,18 +10,21 @@
 #' Suffer no more! You can now ask R directly, without tempting yourself
 #' by firing up your web browser.
 #'
-#' @param team.name
+#' @param team
+#' @param date
 #' @return \code{TRUE} if \code{team.name} has an NHL game on \code{date},
 #' \code{FALSE} otherwise
 #' @keywords misc
 #' @note case in \code{team.name} is ignored
+#' @importFrom RCurl getURL
 #' @export
 #' @examples
 #' gday("canucks")
 #' gday("Bruins")
 
-gday <- function(team.name="canucks") {
-	url <- paste0("http://live.nhle.com/GameData/GCScoreboard/", Sys.Date(), ".jsonp")
-	grepl(team.name, getURL(url), ignore.case=TRUE)
+gday <- function(team="canucks", date = Sys.Date()) {
+	stopifnot(as.Date(date))
+	url <- paste0("http://live.nhle.com/GameData/GCScoreboard/", date, ".jsonp")
+	grepl(team, getURL(url), ignore.case=TRUE)
 }
 

@@ -3,10 +3,12 @@
 \alias{gday}
 \title{Is it Gameday?}
 \usage{
-gday(team.name = "canucks")
+gday(team = "canucks", date = Sys.Date())
 }
 \arguments{
-\item{team.name}{}
+\item{team}{}
+
+\item{date}{}
 }
 \value{
 \code{TRUE} if \code{team.name} has an NHL game on \code{date},
